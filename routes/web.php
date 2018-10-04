@@ -10,20 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/','API\PerpustakaanController@index')->name('user.perpustakaan');
+
+
+Route::group(['prefix' => 'api'],function(){
+	Route::get('get-buku','API\PerpustakaanController@getBuku')->name('api.get.buku');
+	Route::get('get-buku-detail','API\PerpustakaanController@getBukuDetail')->name('api.get.buku.detail');
+	Route::post('store-buku','API\PerpustakaanController@storeBuku')->name('api.store.buku');
+	Route::post('store-pinjam','API\PerpustakaanController@storePinjam')->name('api.store.pinjam');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-// Group User
-Route::group(['middleware' => ['auth'], 'prefix' => 'user'],function(){
-	Route::get('articles','User\ArticlesController@index')->name('user.articles');
-	Route::get('tutorial','User\TutorialController@index')->name('user.tutorial');
-});
-
-Route::group(['prefix' => 'api'], function(){
-	Route::get('articles','API\ArticlesController@index')->name('api.articles');
-	Route::post('article/store','API\ArticlesController@store')->name('api.articles.store');
-});

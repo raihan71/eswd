@@ -11,4 +11,20 @@ class PerpustakaanController extends Controller
     {
     	return view('perpustakaan.index');
     }
+
+    public function getBuku(){
+
+    }
+    public function getBukuDetail(){
+
+    }
+    
+    public function storeBuku(){
+
+    }
+    
+    public function storePinjam(){
+
+    }
+    
 }
