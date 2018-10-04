@@ -10,9 +10,9 @@ class Book extends Model
   protected $guarded = 'id';
     //
 
-  public static function getBuku($search){
+  public static function getBuku($search,$limit){
 
-    $buku = DB::table('books')->select(['id','judul','penulis','gambar','deskripsi']);
+    $buku = DB::table('books')->select($limit);
 
     if(isset($search['id'])){
       $buku->where('id','LIKE','%'. $search['id'] .'%');

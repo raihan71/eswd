@@ -15,14 +15,26 @@ class PerpustakaanController extends Controller
 
     public function getBuku(Request $request){
       $data = $request->all();
-      $buku = Book::getBuku($data);
+
+      $limit = ['id','judul','penulis','gambar','deskripsi'];
+
+      $buku = Book::getBuku($data,$limit);
 
       return response()->json($buku);
 
     }
 
-    public function getBukuDetail(){
+    public function getBukuDetail(Request $request){
+      $data = $request->all();
+      $limit = [
+        'id','judul','penulis','gambar','deskripsi',
+        'subjudul','penerbit','status','created_at',
+        'updated_at'
+      ];
 
+      $buku = Book::getBuku($data,$limit);
+
+      return response()->json($buku);
     }
 
     public function storeBuku(){
