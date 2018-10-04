@@ -37,8 +37,12 @@ class PerpustakaanController extends Controller
       return response()->json($buku);
     }
 
-    public function storeBuku(){
+    public function storeBuku(Request $request){
+      $data = $request->all();
 
+      $response = Book::storeBuku($data);
+
+      return response()->json($response);
     }
 
     public function storePinjam(){

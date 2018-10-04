@@ -61,4 +61,10 @@ class Book extends Model
     return $buku->paginate(8);
 
   }
+
+  public static function storeBuku($data){
+    
+    DB::table('books')->insert($data);
+
+  }
 }
