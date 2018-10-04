@@ -12,7 +12,7 @@ class Book extends Model
 
   public static function getBuku($search){
 
-    $buku = DB::table('books');
+    $buku = DB::table('books')->select(['id','judul','penulis','gambar','deskripsi']);
 
     if(isset($search['id'])){
       $buku->where('id','LIKE','%'. $search['id'] .'%');
@@ -58,7 +58,7 @@ class Book extends Model
     //     $buku->where($key,'LIKE','%'. $s .'%');
     // }
 
-    return $buku->get();
+    return $buku->paginate(8);
 
   }
 }
