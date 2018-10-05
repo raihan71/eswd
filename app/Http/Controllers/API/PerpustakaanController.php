@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Book;
+use App\Transaction;
 
 class PerpustakaanController extends Controller
 {
@@ -62,8 +63,28 @@ class PerpustakaanController extends Controller
 
     }
 
-    public function storePinjam(){
-      
+    public function storePinjam(Request $request){
+      $validator = Validator::make($request->all(),[
+        'id_buku' => 'required',
+        'nama_peminjam' => 'required|max:50',
+        'alamat'  => 'required',
+        'no_hp' => 'required|max:13',
+      ]);
+
+      if ($validator->fails()) {
+        return response()->json(['error'=>$validator->errors()], 401);
+      }
+
+      $data = $request->all();
+      $store = Transaction::storePinjam($data);
+
+      if($store == true){
+        $msg = 'Peminjaman telah dilakukan';
+      }else{
+        $msg = 'Buku tidak tersedia atau buku sudah ada yang meminjam.';
+      }
+
+      return response()->json(['success' => $msg], 200);
     }
 
 }
