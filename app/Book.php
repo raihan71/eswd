@@ -63,8 +63,10 @@ class Book extends Model
   }
 
   public static function storeBuku($data){
-    
+
     DB::table('books')->insert($data);
+
+    return true;
 
   }
 }
