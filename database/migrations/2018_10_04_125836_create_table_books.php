@@ -15,6 +15,13 @@ class CreateTableBooks extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('judul');
+            $table->string('penulis');
+            $table->string('penerbit');
+            $table->string('subjudul');
+            $table->string('gambar');
+            $table->string('deskripsi');
+            $table->enum('status',[0,1]);
             $table->timestamps();
         });
     }

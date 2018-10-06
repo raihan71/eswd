@@ -15,6 +15,12 @@ class CreateTableTransaction extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_buku');
+            $table->string('nama_peminjam');
+            $table->string('alamat');
+            $table->string('no_hp');
+            $table->datetime('tanggal_pinjam');
+            $table->datetime('tanggal_kembali');
             $table->timestamps();
         });
     }
