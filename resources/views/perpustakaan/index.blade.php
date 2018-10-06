@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div id="app">
-		<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+		<nav class="navbar navbar-expand-md bg-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name') }}
@@ -72,7 +72,23 @@
         </nav>
 
         <main class="py-4">
-        	<example></example>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="card card-default">
+                            <div class="card-header">{{__('Menu')}}</div>
+
+                                <ul class="list-group list-group-flush">
+                                    <router-link :to="{name:'welcome'}"><li class="list-group-item"><i class="fa fa-home"></i> Beranda</li></router-link>
+                                    <router-link :to="{name:'manageBook'}"><li class="list-group-item"><i class="fa fa-book"></i> Pengaturan Buku</li></router-link>
+                                    <router-link :to="{name:'transaction'}"><li class="list-group-item"><i class="fa fa-area-chart"></i> Transaksi Peminjaman</li></router-link>
+                                </ul>
+                        </div>
+                    </div>
+                    <router-view name="books"></router-view>
+                    <router-view></router-view>
+                </div>
+            </div>
         </main>
 
 	</div>

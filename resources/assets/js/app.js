@@ -8,6 +8,15 @@ import VueRouter from 'vue-router';
 import ArticlesIndex from './components/articles/ArticlesIndex.vue';
 import ArticlesCreate from './components/articles/ArticlesCreate.vue';
 import ArticlesEdit from './components/articles/ArticlesEdit.vue';
+import BooksIndex from './components/books/BooksIndex.vue';
+// Books
+import ManageBook from './components/books/ManageBook.vue';
+import CreateBook from './components/books/CreateBook.vue';
+import EditBook	from './components/books/EditBook.vue';
+import ShowBook from './components/books/ShowBook.vue';
+// Transaction
+import TransaksiPeminjaman from './components/transaksi/TransaksiPeminjaman.vue';
+import CreateTransaction from './components/transaksi/TambahTransaksi.vue';
 
 require('./bootstrap');
 window.introJs = require('./intro.js');
@@ -37,9 +46,34 @@ const routes = [
 	// 	component: ArticlesEdit, 
 	// 	name: 'editArticle', 
 	// },
-	// {
-	// 	path: '/', 
-	// }
+	{
+		path: '/', 
+		components: {
+			books: BooksIndex, 
+		}, 
+		name: 'welcome', 
+	},
+	{
+		path: '/books', 
+		component: ManageBook, 
+		name: 'manageBook', 
+
+	},
+	{
+		path: '/book/create', 
+		component: CreateBook, 
+		name: 'createBook', 
+	},
+	{
+		path: '/transaction', 
+		component: TransaksiPeminjaman,
+		name: 'transaction', 
+	},
+	{
+		path: '/transaction/create', 
+		component: CreateTransaction,
+		name: 'createTransaction', 
+	},
 ]
 Vue.component('example', require('./components/ExampleComponent.vue'));
 const router = new VueRouter({routes});

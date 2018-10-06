@@ -12,10 +12,9 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-    	$auth 	  = Auth::user()->id;
-    	$articles = Articles::where('user_id',$auth)->get();
+    	$articles = Articles::all();
     	// dd($auth);
-    	return response()->json($articles);
+    	return $articles;
     }
 
     public function store(Request $request)
