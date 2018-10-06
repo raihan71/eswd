@@ -16,8 +16,10 @@ Route::get('/','API\PerpustakaanController@index')->name('user.perpustakaan');
 Route::group(['prefix' => 'api'],function(){
 	Route::get('get-buku','API\PerpustakaanController@getBuku')->name('api.get.buku');
 	Route::get('get-buku-detail','API\PerpustakaanController@getBukuDetail')->name('api.get.buku.detail');
-	Route::post('store-buku','API\PerpustakaanController@storeBuku')->name('api.store.buku');
-	Route::post('store-pinjam','API\PerpustakaanController@storePinjam')->name('api.store.pinjam');
+	Route::get('store-buku','API\PerpustakaanController@storeBuku')->name('api.store.buku');
+	Route::get('store-pinjam','API\PerpustakaanController@storePinjam')->name('api.store.pinjam');
+	Route::get('ichsan','API\PerpustakaanController@getBuku');
+	Route::get('data-judul-buku','API\PerpustakaanController@getJudulBuku');
 });
 
 Auth::routes();

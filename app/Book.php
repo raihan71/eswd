@@ -62,6 +62,14 @@ class Book extends Model
 
   }
 
+  public static function getJudulBuku($data){
+
+    if(isset($data['judul']))
+    return DB::table('books')->where('judul','LIKE','%'.$data['judul'].'%')->get();
+    else
+    return false;
+  }
+
   public static function storeBuku($data){
 
     DB::table('books')->insert($data);

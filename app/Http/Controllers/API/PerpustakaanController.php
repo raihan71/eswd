@@ -87,4 +87,23 @@ class PerpustakaanController extends Controller
       return response()->json(['success' => $msg], 200);
     }
 
+    public function getJudulBuku(Request $request){
+
+      $validator = Validator::make($request->all(),[
+        'judul' => 'required',
+      ]);
+
+      if ($validator->fails()){
+        return response()->json(['error' => $validator->error()],401);
+      }
+
+      $data = $request->all();
+
+      $book = Book::getJudulBuku($data);
+
+      return response()->json($book);
+
+
+    }
+
 }
